@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Master</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #f2f5fa;
+    color: #222;
+}
+
+header {
+    background: #2457d6;
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+    border-radius: 0 0 30px 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin-bottom: 0;
+    font-size: 17px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+button {
+    width: 100%;
+    border: none;
+    padding: 16px;
+    margin-top: 10px;
+    border-radius: 14px;
+    background: #2457d6;
+    color: white;
+    font-size: 17px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.back {
+    background: #555;
+}
+
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.wrong {
+    color: red;
+    font-weight: bold;
+}
+
+.word {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 17px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🇬🇧 English Master</h1>
+    <p>Learn English step by step</p>
+</header>
+
+<div class="container" id="app">
+
+    <div class="card">
+        <h2>👋 Welcome!</h2>
+        <p>
+            Learn English through lessons,
+            vocabulary and quizzes.
+        </p>
+    </div>
+
+    <button onclick="lessons()">📚 Lessons</button>
+    <button onclick="vocabulary()">📖 Vocabulary</button>
+    <button onclick="quiz()">🎯 Quiz</button>
+
+</div>
+
+<footer>
+    English Master © 2026
+</footer>
+
+<script>
+
+function home() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+            <h2>👋 Welcome!</h2>
+            <p>
+                Learn English through lessons,
+                vocabulary and quizzes.
+            </p>
+        </div>
+
+        <button onclick="lessons()">📚 Lessons</button>
+        <button onclick="vocabulary()">📖 Vocabulary</button>
+        <button onclick="quiz()">🎯 Quiz</button>
+    `;
+}
+
+
+function lessons() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <h2>📚 Lessons</h2>
+
+            <button onclick="greetings()">
+                Lesson 1 — Greetings
+            </button>
+
+            <button onclick="verbToBe()">
+                Lesson 2 — Verb To Be
+            </button>
+
+            <button onclick="presentSimple()">
+                Lesson 3 — Present Simple
+            </button>
+
+            <button class="back" onclick="home()">
+                ← Home
+            </button>
+
+        </div>
+    `;
+}
+
+
+function greetings() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <h2>👋 Greetings</h2>
+
+            <div class="word">
+                <b>Hello</b> — Olá
+            </div>
+
+            <div class="word">
+                <b>Good morning</b> — Bom dia
+            </div>
+
+            <div class="word">
+                <b>Good afternoon</b> — Boa tarde
+            </div>
+
+            <div class="word">
+                <b>Good evening</b> — Boa noite
+            </div>
+
+            <div class="word">
+                <b>How are you?</b> — Como estás?
+            </div>
+
+            <div class="word">
+                <b>I'm fine.</b> — Estou bem.
+            </div>
+
+            <div class="word">
+                <b>Goodbye</b> — Adeus.
+            </div>
+
+            <button onclick="greetingQuiz()">
+                📝 Practice
+            </button>
+
+            <button class="back" onclick="lessons()">
+                ← Back
+            </button>
+
+        </div>
+    `;
+}
+
+
+function greetingQuiz() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <h2>📝 Practice</h2>
+
+            <p>
+                How do you say
+                <b>"Bom dia"</b>
+                in English?
+            </p>
+
+            <button onclick="answer(true)">
+                Good morning
+            </button>
+
+            <button onclick="answer(false)">
+                Good evening
+            </button>
+
+            <button onclick="answer(false)">
+                Goodbye
+            </button>
+
+            <div id="result"></div>
+
+        </div>
+    `;
+}
+
+
+function answer(correct) {
+
+    let result = document.getElementById("result");
+
+    if (correct) {
+
+        result.innerHTML = `
+            <p class="correct">
+                ✅ Correct! +10 points
+            </p>
+
+            <button onclick="lessons()">
+                Continue
+            </button>
+        `;
+
+    } else {
+
+        result.innerHTML = `
+            <p class="wrong">
+                ❌ Incorrect!
+            </p>
+
+            <p>
+                The correct answer is
+                <b>Good morning</b>.
+            </p>
+
+            <button onclick="greetingQuiz()">
+                Try Again
+            </button>
+        `;
+    }
+}
+
+
+function verbToBe() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <h2>🔤 Verb To Be</h2>
+
+            <div class="word">
+                <b>I am</b> — Eu sou / estou
+            </div>
+
+            <div class="word">
+                <b>You are</b> — Tu és / estás
+            </div>
+
+            <div class="word">
+                <b>He is</b> — Ele é / está
+            </div>
+
+            <div class="word">
+                <b>She is</b> — Ela é / está
+            </div>
+
+            <div class="word">
+                <b>We are</b> — Nós somos / estamos
+            </div>
+
+            <div class="word">
+                <b>They are</b> — Eles são / estão
+            </div>
+
+            <button class="back" onclick="lessons()">
+                ← Back
+            </button>
+
+        </div>
+    `;
+}
+
+
+function presentSimple() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <h2>⏰ Present Simple</h2>
+
+            <div class="word">
+                <b>I work.</b> — Eu trabalho.
+            </div>
+
+            <div class="word">
+                <b>You study.</b> — Tu estudas.
+            </div>
+
+            <div class="word">
+                <b>He works.</b> — Ele trabalha.
+            </div>
+
+            <div class="word">
+                <b>She studies.</b> — Ela estuda.
+            </div>
+
+            <div class="word">
+                <b>We play.</b> — Nós jogamos.
+            </div>
+
+            <div class="word">
+                <b>They live.</b> — Eles vivem.
+            </div>
+
+            <button class="back" onclick="lessons()">
+                ← Back
+            </button>
+
+        </div>
+    `;
+}
+
+
+function vocabulary() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <h2>📖 Vocabulary</h2>
+
+            <div class="word">🏠 House — Casa</div>
+            <div class="word">📚 Book — Livro</div>
+            <div class="word">🏫 School — Escola</div>
+            <div class="word">👨‍🏫 Teacher — Professor</div>
+            <div class="word">🎓 Student — Estudante</div>
+            <div class="word">👨‍👩‍👧 Family — Família</div>
+            <div class="word">💧 Water — Água</div>
+            <div class="word">🍎 Food — Comida</div>
+            <div class="word">❤️ Love — Amor</div>
+
+            <button class="back" onclick="home()">
+                ← Home
+            </button>
+
+        </div>
+    `;
+}
+
+
+function quiz() {
+
+    document.getElementById("app").innerHTML = `
+
+        <div class="card">
+
+            <h2>🎯 Quiz</h2>
+
+            <p>
+                What is
+                <b>"Teacher"</b>
+                in Portuguese?
+            </p>
+
+            <button onclick="quizAnswer(true)">
+                Professor
+            </button>
+
+            <button onclick="quizAnswer(false)">
+                Estudante
+            </button>
+
+            <button onclick="quizAnswer(false)">
+                Amigo
+            </button>
+
+            <div id="quizResult"></div>
+
+        </div>
+    `;
+}
+
+
+function quizAnswer(correct) {
+
+    let result = document.getElementById("quizResult");
+
+    if (correct) {
+
+        result.innerHTML = `
+            <p class="correct">
+                ✅ Correct! +10 points
+            </p>
+
+            <button onclick="home()">
+                Finish
+            </button>
+        `;
+
+    } else {
+
+        result.innerHTML = `
+            <p class="wrong">
+                ❌ Incorrect!
+            </p>
+
+            <p>
+                The correct answer is
+                <b>Professor</b>.
+            </p>
+
+            <button onclick="quiz()">
+                Try Again
+            </button>
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
